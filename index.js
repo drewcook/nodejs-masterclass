@@ -6,23 +6,9 @@ const http = require('http')
 const https = require('https')
 const url = require('url')
 const { StringDecoder } = require('string_decoder')
-const config = require('./config')
-const _data = require('./lib/data')
-
-// TESTING OUR DATASTORE - CRUD
-_data.create('test', 'example', { name: 'Drew', isHealthy: false }, err => {
-	if (err) console.error('An error occurred while creating a new file:\n', err)
-})
-_data.read('test', 'example', (err, data) => {
-	if (err && !data) console.error('An error occurred while reading from a file:\n', err)
-	if (data) console.log('Content from file:\n', data)
-})
-_data.update('test', 'example', { age: 32 }, err => {
-	if (err) console.error('An error occurred while updating an existing file:\n', err)
-})
-_data.delete('test', 'example', err => {
-	if (err) console.error('An error occurred while deleting a file:\n', err)
-})
+const config = require('./lib/config')
+const handlers = require('./lib/handlers')
+const helpers = require('./lib/helpers')
 
 // The server should respond to all requests with a string
 // We reuse logic in unifiedServer so that we can apply it to both HTTP and HTTPS servers
@@ -32,7 +18,7 @@ const unifiedServer = (req, res) => {
 	// Get path from the url, trim out all forward slashes
 	const path = parsedUrl.pathname.replace(/^\/+|\/+$/g, '')
 	// Get the HTTP request method
-	const method = req.method.toUpperCase()
+	const method = req.method.toLowerCase()
 	// Get the query strings
 	const qs = parsedUrl.query
 	// Get the HTTP headers
@@ -51,12 +37,13 @@ const unifiedServer = (req, res) => {
 		const handler = typeof router[path] !== 'undefined' ? router[path] : handlers.notFound
 
 		// Construct payload to send
+		const payload = helpers.parseJsonStringToObject(buffer)
 		const data = {
 			path,
 			qs,
 			method,
 			headers,
-			payload: buffer,
+			payload,
 		}
 
 		handler(data, (statusCode, payload) => {
@@ -95,20 +82,8 @@ httpsServer.listen(config.httpsPort, () => {
 	console.log(`HTTPS server is listening on port ${config.httpsPort} in ${config.name} mode...`)
 })
 
-// Define our request handlers for our router
-// Callback an HTTP status code and a payload object
-const handlers = {
-	// Ping handler, useful for monitoring that the API is up
-	ping: (data, cb) => {
-		cb(200)
-	},
-	// Default not found handler
-	notFound: (data, cb) => {
-		cb(404)
-	},
-}
-
 // Define a router for incoming requests to be routed to different request handlers based on the request path
 const router = {
 	ping: handlers.ping,
+	users: handlers.users,
 }
