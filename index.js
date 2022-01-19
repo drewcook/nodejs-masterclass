@@ -7,6 +7,22 @@ const https = require('https')
 const url = require('url')
 const { StringDecoder } = require('string_decoder')
 const config = require('./config')
+const _data = require('./lib/data')
+
+// TESTING OUR DATASTORE - CRUD
+_data.create('test', 'example', { name: 'Drew', isHealthy: false }, err => {
+	if (err) console.error('An error occurred while creating a new file:\n', err)
+})
+_data.read('test', 'example', (err, data) => {
+	if (err && !data) console.error('An error occurred while reading from a file:\n', err)
+	if (data) console.log('Content from file:\n', data)
+})
+_data.update('test', 'example', { age: 32 }, err => {
+	if (err) console.error('An error occurred while updating an existing file:\n', err)
+})
+_data.delete('test', 'example', err => {
+	if (err) console.error('An error occurred while deleting a file:\n', err)
+})
 
 // The server should respond to all requests with a string
 // We reuse logic in unifiedServer so that we can apply it to both HTTP and HTTPS servers
