@@ -5,13 +5,15 @@
 // Development (default) environment
 const development = {
 	name: 'development',
-	port: 3000,
+	httpPort: 3000,
+	httpsPort: 3001,
 }
 
 // Production environment
 const production = {
 	name: 'production',
-	port: 8888,
+	httpPort: 80,
+	httpsPort: 443,
 }
 
 const environments = {

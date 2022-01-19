@@ -1,14 +1,16 @@
 /**
  * Create and configure an HTTP server
  */
-
+const fs = require('fs')
 const http = require('http')
+const https = require('https')
 const url = require('url')
 const { StringDecoder } = require('string_decoder')
 const config = require('./config')
 
 // The server should respond to all requests with a string
-const server = http.createServer((req, res) => {
+// We reuse logic in unifiedServer so that we can apply it to both HTTP and HTTPS servers
+const unifiedServer = (req, res) => {
 	// Get url and parse it with query strings data
 	const parsedUrl = url.parse(req.url, true)
 	// Get path from the url, trim out all forward slashes
@@ -59,24 +61,38 @@ const server = http.createServer((req, res) => {
 			console.log('Returned a response:', resStatus, resPayload)
 		})
 	})
+}
+
+// Start up the HTTP server
+const httpServer = http.createServer(unifiedServer)
+httpServer.listen(config.httpPort, () => {
+	console.log(`HTTP server is listening on port ${config.httpPort} in ${config.name} mode...`)
 })
 
-// Start the server and listen on port 3000
-server.listen(config.port, () => {
-	console.log(`Server is listening on port ${config.port} in ${config.name} mode...`)
+// Start up the HTTPS server
+const httpsServerOptions = {
+	key: fs.readFileSync('./https/key.pem'),
+	cert: fs.readFileSync('./https/cert.pem'),
+}
+const httpsServer = https.createServer(httpsServerOptions, unifiedServer)
+httpsServer.listen(config.httpsPort, () => {
+	console.log(`HTTPS server is listening on port ${config.httpsPort} in ${config.name} mode...`)
 })
 
 // Define our request handlers for our router
 // Callback an HTTP status code and a payload object
-const handlers = {}
-handlers.sample = (data, cb) => {
-	cb(406, { name: 'sample handler' })
-}
-handlers.notFound = (data, cb) => {
-	cb(404)
+const handlers = {
+	// Ping handler, useful for monitoring that the API is up
+	ping: (data, cb) => {
+		cb(200)
+	},
+	// Default not found handler
+	notFound: (data, cb) => {
+		cb(404)
+	},
 }
 
 // Define a router for incoming requests to be routed to different request handlers based on the request path
 const router = {
-	sample: handlers.sample,
+	ping: handlers.ping,
 }
