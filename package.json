@@ -3,8 +3,6 @@
   "version": "1.0.0",
   "description": "My code walkthrough for a Nodejs masterclass course",
   "main": "index.js",
-  "scripts": {
-  },
   "keywords": ["nodejs", "node", "javascript", "es6"],
   "author": "Drew Cook",
   "license": "ISC"
