@@ -1,7 +1,7 @@
 {
-  "name": "nodejs-masterclass",
+  "name": "nodejs-uptime-monitor",
   "version": "1.0.0",
-  "description": "My code walkthrough for a Nodejs masterclass course",
+  "description": "A fullstack Node app with no external dependencies, to monitor URLs and send SMS messages for status updates.",
   "main": "index.js",
   "keywords": ["nodejs", "node", "javascript", "es6"],
   "author": "Drew Cook",
