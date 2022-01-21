@@ -6,11 +6,11 @@ The application allows users to sign up with their phone number to subscribe to 
 
 ## About
 
-This repo contains code for a REST API, and web app, and a CLI in plain Node.js with no 3rd-party libraries.
+This repo contains code for a REST API, and web app, and a CLI in plain Node.js with no 3rd-party libraries. We use the build in Node library modules to do our lifting.  The following shows what modules are used for each part.
 
-- RESTful API - fs, http, crypto, lib, string decoder and path modules
+- RESTful API - `crypto`, `fs`, `http`, `https`, `path`, `querystring`, `string_decoder`, `url`, and `zlib` modules
 - Web app GUI - consume the API we built with templated views
 - CLI: Readline, Events, TTY, V8, and OS modules.
 - Stability: Testing over HTTP
 - Performance: performance hooks, cluster, and child processes modules
-- Loose Ends: HTTP2, VM, UDP, Net, and TLS modules
+- Loose Ends: HTTP2, VM, UDP, Net, `util`, and TLS modules
