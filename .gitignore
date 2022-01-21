@@ -1,2 +1,8 @@
-node_modules
+# Ignore secrets
 secrets.js
+
+# Ignore local data
+.data
+
+# Ignore log files
+*.log
