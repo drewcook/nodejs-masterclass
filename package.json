@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "A fullstack Node app with no external dependencies, to monitor URLs and send SMS messages for status updates.",
   "main": "index.js",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "debug:workers": "NODE_DEBUG=workers nodemon index.js",
+    "debug:server": "NODE_DEBUG=server nodemon index.js"
+  },
   "keywords": ["nodejs", "node", "javascript", "es6"],
   "author": "Drew Cook",
   "license": "ISC"

@@ -6,3 +6,6 @@ secrets.js
 
 # Ignore log files
 .logs
+
+# OS files
+.DS_Store
