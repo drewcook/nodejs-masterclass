@@ -5,4 +5,4 @@ secrets.js
 .data
 
 # Ignore log files
-*.log
+.logs
