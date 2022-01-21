@@ -1,4 +1,4 @@
-# Nodejs Uptime Monitor
+# Node.js Uptime Monitor
 
 This is a host of tools and applications built purely with [Node.js](https://nodejs.org/en/). It takes advantage of the native Node modules that are built-in, uses background workers, integrates with the [Twilio](https://twilio.com) API for sending SMS messages, presents a GUI, and relies on zero external modules to get all this done.
 
