@@ -1,5 +1,7 @@
 # Node.js Uptime Monitor
 
+A fullstack Node app with no external dependencies, to monitor URLs and send SMS messages for status updates.
+
 This is a host of tools and applications built purely with [Node.js](https://nodejs.org/en/). It takes advantage of the native Node modules that are built-in, uses background workers, integrates with the [Twilio](https://twilio.com) API for sending SMS messages, presents a GUI, and relies on zero external modules to get all this done.
 
 The application allows users to sign up with their phone number to subscribe to SMS messages regarded to URL uptimes and downtimes. A user may monitor up to 5 URLs and get a message whenever the URL changes status from up to down, or vice versa. The user will be allowed to manage their uptime checks by creating and editing, as well as deleting them. The checks will occur to ping the URL once every minute.
