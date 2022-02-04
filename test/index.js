@@ -2,6 +2,9 @@
  * Test Runner
  */
 
+// Override the NODE_ENV variable - enforce we use the testing config
+process.env.NODE_ENV = 'testing'
+
 // Application logic for the test runner
 const _app = {}
 
@@ -10,6 +13,7 @@ _app.tests = {}
 
 // Add on unit tests as dependency
 _app.tests.unit = require('./unit')
+_app.tests.api = require('./api')
 
 _app.countTests = () => {
 	let counter = 0
@@ -97,6 +101,8 @@ _app.produceTestReport = (limit, successess, errors) => {
 
 	console.log('')
 	console.log('===============END TEST REPORTS===============')
+	// Kill process
+	process.exit(0)
 }
 
 // Run the tests
