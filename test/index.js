@@ -1,38 +1,15 @@
 /**
  * Test Runner
  */
-const helpers = require('../lib/helpers')
-const assert = require('assert')
-const app = require('../index-debug')
 
 // Application logic for the test runner
 const _app = {}
 
 // Container for the tests
-_app.tests = {
-	unit: {},
-}
+_app.tests = {}
 
-// Assert that the getANumber() is returning a number
-_app.tests.unit['helpers.getANumber should return a number'] = done => {
-	const val = helpers.getANumber()
-	assert.equal(typeof val, 'number')
-	done()
-}
-
-// Assert that the getANumber() is returning a number
-_app.tests.unit['helpers.getANumber should return 1'] = done => {
-	const val = helpers.getANumber()
-	assert.equal(val, 1)
-	done()
-}
-
-// Assert that the getANumber() is returning a 2
-_app.tests.unit['helpers.getANumber should return 2'] = done => {
-	const val = helpers.getANumber()
-	assert.equal(val, 2)
-	done()
-}
+// Add on unit tests as dependency
+_app.tests.unit = require('./unit')
 
 _app.countTests = () => {
 	let counter = 0
