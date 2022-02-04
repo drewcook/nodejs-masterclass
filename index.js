@@ -1,6 +1,7 @@
 /**
  * Primary file for the REST API
  */
+'use strict'
 const server = require('./lib/server')
 const workers = require('./lib/workers')
 const cli = require('./lib/cli')
