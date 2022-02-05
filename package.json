@@ -6,7 +6,7 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "script": {
+  "scripts": {
     "start": "node index.js",
     "start:cluster": "node index-cluster.js"
   },
