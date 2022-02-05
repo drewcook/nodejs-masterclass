@@ -16,3 +16,7 @@ This repo contains code for a REST API, and web app, and a CLI in plain Node.js 
 - Stability: Testing over HTTP
 - Performance: performance hooks, cluster, and child processes modules
 - Loose Ends: HTTP2, VM, UDP, Net, `util`, and TLS modules
+
+## Run the application
+
+The only requirement is that your machine has a version of Node installed.  You can download the LTS version [here](https://nodejs.org). You can run the application by downloading or cloning this repository code and running `node index.js`, or more simply `npm start`.
