@@ -15,7 +15,7 @@ const app = {
 		workers.init()
 
 		// Start the CLI, but make sure it starts last (dev only)
-		if (process.env.NODE_ENV !== production) {
+		if (process.env.NODE_ENV !== 'production') {
 			setTimeout(() => {
 				cli.init()
 				cb()
