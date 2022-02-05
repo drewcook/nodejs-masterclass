@@ -14,11 +14,13 @@ const app = {
 		// Start the background workers
 		workers.init()
 
-		// Start the CLI, but make sure it starts last
-		setTimeout(() => {
-			cli.init()
-			cb()
-		}, 50)
+		// Start the CLI, but make sure it starts last (dev only)
+		if (process.env.NODE_ENV !== production) {
+			setTimeout(() => {
+				cli.init()
+				cb()
+			}, 50)
+		}
 	},
 }
 
