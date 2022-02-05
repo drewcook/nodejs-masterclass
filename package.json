@@ -6,11 +6,11 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "scripts": {
-    "debug:workers": "NODE_DEBUG=workers nodemon index.js",
-    "debug:server": "NODE_DEBUG=server nodemon index.js"
+  "script": {
+    "start": "node index.js",
+    "start:cluster": "node index-cluster.js"
   },
-  "keywords": ["nodejs", "node", "javascript", "es6"],
+  "keywords": ["nodejs", "node", "javascript", "es6", "twilio", "no-dependencies"],
   "author": "Drew Cook",
   "license": "ISC"
 }
