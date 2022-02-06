@@ -20,3 +20,7 @@ This repo contains code for a REST API, and web app, and a CLI in plain Node.js 
 ## Run the application
 
 The only requirement is that your machine has a version of Node installed.  You can download the LTS version [here](https://nodejs.org). You can run the application by downloading or cloning this repository code and running `node index.js`, or more simply `npm start`.
+
+<p align="center">
+ <img src="https://visitor-badge.glitch.me/badge?page_id=drewcook.nodejs-uptime-monitor" alt="visitor count"/>
+</p>
