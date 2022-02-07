@@ -22,12 +22,6 @@ const app = {
 			// Start the background workers
 			workers.init()
 
-			// Start the CLI, but make sure it starts last
-			setTimeout(() => {
-				cli.init()
-				cb()
-			}, 50)
-
 			// Fork the process for each # of cores on the CPU
 			const cores = os.cpus().length
 			for (let i = 0; i < cores; i++) {
@@ -36,6 +30,14 @@ const app = {
 		} else {
 			// If we're not on the master thread, start the HTTP server
 			server.init()
+		}
+
+		// Start the CLI, but make sure it starts last
+		if (process.env.NODE_ENV !== 'production') {
+			setTimeout(() => {
+				cli.init()
+				cb()
+			}, 50)
 		}
 	},
 }
