@@ -1,5 +1,7 @@
 # Node.js Uptime Monitor
 
+View the demo [here](https://nodejs-uptime-monitor.herokuapp.com/).
+
 A fullstack Node app with no external dependencies, to monitor URLs and send SMS messages for status updates.
 
 This is a host of tools and applications built purely with [Node.js](https://nodejs.org/en/). It takes advantage of the native Node modules that are built-in, uses background workers, integrates with the [Twilio](https://twilio.com) API for sending SMS messages, presents a GUI, and relies on zero external modules to get all this done.
