@@ -2,7 +2,7 @@
 secrets.js
 
 # Ignore local data
-.data
+.data/**/
 
 # Ignore log files
 .logs
