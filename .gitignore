@@ -1,11 +1,7 @@
 # Ignore secrets
 secrets.js
 
-# Ignore local data
-.data/**/
-
-# Ignore log files
-.logs
-
 # OS files
 .DS_Store
+
+# Local data store and logs will be ignored at a lower scope

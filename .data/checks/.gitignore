@@ -1,0 +1,2 @@
+# Prompts folder to be committed to Git and Heroku, ignores files though
+*.json

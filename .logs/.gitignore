@@ -1,0 +1,3 @@
+# Prompts folder to be committed to Git and Heroku, ignores log files though
+*.log
+*.gz.b64
